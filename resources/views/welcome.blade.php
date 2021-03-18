@@ -34,6 +34,7 @@
   </table>
 </div>
 
-<button type="submit" class="btn btn-outline-primary">Primary</button>
+<button type="submit" class="btn btn-outline-primary" onclick="location.href='{{ route('register')}}'">
+  {{ __('Register') }}</button>
 
 @endsection

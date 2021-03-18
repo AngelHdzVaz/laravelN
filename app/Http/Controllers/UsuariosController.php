@@ -12,12 +12,18 @@ class UsuariosController extends Controller
 {
     //UsuariosController para registro
     public function registrarUsuario(Request $request){
+      dd($request);
       try {
-        $correo = $request->correo;
-        $pasword = $request->pasword;
+        $nombre = $request->name;
+        $correo = $request->email;
+        $pasword = $request->password;
         //validacion
         if ($correo == null) {
-          return "El correo no debe estar vacío";
+          return redirect()->back()->with([
+            'titulo' => 'correo',
+            'mensaje' => 'falla',
+            'tipo' => 'warning'
+          ]);
         }else if ($pasword == null) {
           return "La contraseña no debe estar vacío";
         }
