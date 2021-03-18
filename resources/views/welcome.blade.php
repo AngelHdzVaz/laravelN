@@ -1,6 +1,14 @@
 @extends ('layouts.app')
 
 @section('content')
+<script>
+  Swal.fire({
+  title: 'Error!',
+  text: 'Do you want to continue',
+  icon: 'error',
+  confirmButtonText: 'Cool'
+  })
+</script>
 <?php
 
  ?>
@@ -25,5 +33,7 @@
     </tbody>
   </table>
 </div>
+
+<button type="submit" class="btn btn-outline-primary">Primary</button>
 
 @endsection

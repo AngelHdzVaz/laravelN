@@ -25,6 +25,7 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
-        "browser-sync-webpack-plugin": "^2.3.0"
+        "browser-sync-webpack-plugin": "^2.3.0",
+        "sweetalert2": "^10.15.6"
     }
 }
