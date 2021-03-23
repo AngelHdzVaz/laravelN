@@ -12,13 +12,19 @@ class UsuariosController extends Controller
 {
     //UsuariosController para registro
     public function registrarUsuario(Request $request){
-      dd($request);
+
       try {
-        $nombre = $request->name;
+        $name = $request->name;
         $correo = $request->email;
         $pasword = $request->password;
         //validacion
-        if ($correo == null) {
+        if ($name == null) {
+          return redirect()->back()->with([
+            'titulo' => 'nombre',
+            'mensaje' => 'falla',
+            'tipo' => 'warning'
+          ]);
+        }if ($correo == null) {
           return redirect()->back()->with([
             'titulo' => 'correo',
             'mensaje' => 'falla',
@@ -31,16 +37,16 @@ class UsuariosController extends Controller
         $variable = 'El correo registrado es ' . $correo;
         //transacciones
         DB::beginTransaction();
-
         Usuario::create([
+          'nombre' => $name,
           'correo' => $correo,
           'password' => Hash::make($pasword)
         ]);
 
         DB::commit();
 
-        //return redirect()->route('VerWelcome');
-        return view('welcome', compact('variable'));
+        return redirect()->route('VerWelcome');
+
       } catch (\Exception $e) {
         DB::rollback();
         return $e->getMessage();
